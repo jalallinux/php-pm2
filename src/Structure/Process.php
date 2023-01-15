@@ -26,9 +26,9 @@ final class Process
         return $instance;
     }
 
-    public function start(): bool
+    public function start(array $options = []): bool
     {
-        return pm2()->start($this->name);
+        return pm2()->start($this->name, $options);
     }
 
     public function stop(): bool
@@ -46,13 +46,13 @@ final class Process
         return pm2()->delete($this->name);
     }
 
-    public function logErr(): string
+    public function logErr(int $lines = 100): string
     {
-        return pm2()->logErr($this->name);
+        return pm2()->logErr($this->name, $lines);
     }
 
-    public function logOut(): string
+    public function logOut(int $lines = 100): string
     {
-        return pm2()->logOut($this->name);
+        return pm2()->logOut($this->name, $lines);
     }
 }
