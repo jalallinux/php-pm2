@@ -52,3 +52,17 @@ it('is findBy test', function () {
         expect(pm2()->findBy('name', $name))->toBeInstanceOf(Process::class);
     }
 });
+
+it('is delete test', function () {
+    if (pm2()->isInstall()) {
+        pm2()->start("ls -la", $name = uniqid());
+        expect(pm2()->delete($name))->toBeTrue();
+    }
+});
+
+it('is stop test', function () {
+    if (pm2()->isInstall()) {
+        pm2()->start("ls -la", $name = uniqid());
+        expect(pm2()->stop($name))->toBeTrue();
+    }
+});

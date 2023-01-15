@@ -13,9 +13,9 @@ class Pm2
         }, json_decode(shell_exec('pm2 jlist'), true));
     }
 
-    public function start(string $command, string $name = null): bool
+    public function start(string $command = null, string $name = null): bool
     {
-        return !is_null($this->runCommand("start \"{$command}\"" . (!is_null($name) ? " --name {$name}" : '')));
+        return !is_null($this->runCommand("start" . (!is_null($command) ? " {$command}" : '') . (!is_null($name) ? " --name {$name}" : '')));
     }
 
     public function findBy(string $key, string $value): ?Process
@@ -53,6 +53,16 @@ class Pm2
             return true;
         }
         return false;
+    }
+
+    public function stop(string $idOrName): bool
+    {
+        return !is_null($this->runCommand("stop {$idOrName}"));
+    }
+
+    public function delete(string $idOrName): bool
+    {
+        return !is_null($this->runCommand("delete {$idOrName}"));
     }
 
     public function save(bool $force = true): bool
