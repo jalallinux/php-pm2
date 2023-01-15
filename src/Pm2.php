@@ -175,6 +175,26 @@ class Pm2
     }
 
     /**
+     * @param string|null $idOrName
+     * @param int $lines
+     * @return string
+     */
+    public function logOut(string $idOrName = null, int $lines = 100): string
+    {
+        return $this->runCommand('logs' . (!is_null($idOrName) ? " {$idOrName}" : '') . " --lines={$lines} --nostream --raw --out");
+    }
+
+    /**
+     * @param string|null $idOrName
+     * @param int $lines
+     * @return string
+     */
+    public function logErr(string $idOrName = null, int $lines = 100): string
+    {
+        return $this->runCommand('logs' . (!is_null($idOrName) ? " {$idOrName}" : '') . " --lines={$lines} --nostream --raw --err");
+    }
+
+    /**
      * @return string
      */
     public function version(): string

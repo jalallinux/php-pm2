@@ -198,6 +198,34 @@ pm2()->save(bool $force = true): bool
 | `force` | **bool** | Force save list |
 
 ---
+### logOut
+Display all processes output logs
+```php
+pm2()->logOut(string $idOrName = null, int $lines = 100): string
+```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `idOrName` | **?string** | Id or name of process |
+| `lines` | **int** | To dig in older logs |
+
+---
+### logErr
+Display all processes error logs
+```php
+pm2()->logErr(string $idOrName = null, int $lines = 100): string
+```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `idOrName` | **?string** | Id or name of process |
+| `lines` | **int** | To dig in older logs |
+
+---
 ### version
 Fetch installed pm2 version
 ```php

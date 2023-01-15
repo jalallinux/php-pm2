@@ -2,6 +2,13 @@
 
 use JalalLinuX\Pm2\Structure\Process;
 
+const TEST_PROCESS_NAME_PREFIX = "JalalLinuX-Test-Process-";
+
+afterAll(function () {
+    pm2()->delete("/" . TEST_PROCESS_NAME_PREFIX . "./");
+    pm2()->save();
+});
+
 it('list structure test', function () {
     if (pm2()->isInstall()) {
         expect(pm2()->list())
@@ -54,35 +61,40 @@ it('is flush test', function () {
 
 it('is findBy test', function () {
     if (pm2()->isInstall()) {
-        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
+        $name = TEST_PROCESS_NAME_PREFIX . uniqid();
+        pm2()->start("ls -la", ['name' => $name, 'no-autorestart']);
         expect(pm2()->findBy('name', $name))->toBeInstanceOf(Process::class);
     }
 });
 
 it('is delete test', function () {
     if (pm2()->isInstall()) {
-        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
+        $name = TEST_PROCESS_NAME_PREFIX . uniqid();
+        pm2()->start("ls -la", ['name' => $name, 'no-autorestart']);
         expect(pm2()->delete($name))->toBeTrue();
     }
 });
 
 it('is stop test', function () {
     if (pm2()->isInstall()) {
-        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
+        $name = TEST_PROCESS_NAME_PREFIX . uniqid();
+        pm2()->start("ls -la", ['name' => $name, 'no-autorestart']);
         expect(pm2()->stop($name))->toBeTrue();
     }
 });
 
 it('is restart test', function () {
     if (pm2()->isInstall()) {
-        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
+        $name = TEST_PROCESS_NAME_PREFIX . uniqid();
+        pm2()->start("ls -la", ['name' => $name, 'no-autorestart']);
         expect(pm2()->restart($name))->toBeTrue();
     }
 });
 
 it('is pid test', function () {
     if (pm2()->isInstall()) {
-        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
+        $name = TEST_PROCESS_NAME_PREFIX . uniqid();
+        pm2()->start("ls -la", ['name' => $name, 'no-autorestart']);
         expect(pm2()->pid($name))->toBeInt();
     }
 });
@@ -100,9 +112,26 @@ it('is unlink test', function () {
     }
 });
 
+it('is logOut test', function () {
+    if (pm2()->isInstall()) {
+        $name = TEST_PROCESS_NAME_PREFIX . uniqid();
+        pm2()->start("ls -la", ['name' => $name, 'no-autorestart']);
+        expect(pm2()->logOut($name))->toBeString();
+    }
+});
+
+it('is logErr test', function () {
+    if (pm2()->isInstall()) {
+        $name = TEST_PROCESS_NAME_PREFIX . uniqid();
+        pm2()->start("ls -la", ['name' => $name, 'no-autorestart']);
+        expect(pm2()->logErr($name))->toBeString();
+    }
+});
+
 it('is kill test', function () {
     if (pm2()->isInstall()) {
-        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
+        $name = TEST_PROCESS_NAME_PREFIX . uniqid();
+        pm2()->start("ls -la", ['name' => $name, 'no-autorestart']);
         expect(pm2()->kill())->toBeTrue();
         expect(pm2()->list())->toBeArray()->toBeEmpty();
     }
