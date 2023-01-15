@@ -11,6 +11,18 @@ class Pm2
         return array_map(static fn($rec) => Process::fromJson($rec), $this->json());
     }
 
+    public function link(string $publicKey, string $secretKey, string $machineName = null): bool
+    {
+        $result = $this->runCommand("link {$secretKey} {$publicKey} {$machineName}");
+        return strpos($result, 'activated!') !== false;
+    }
+
+    public function unlink(): bool
+    {
+        $result = $this->runCommand("link delete");
+        return strpos($result, 'ended') !== false;
+    }
+
     public function start(string $command = null, string $name = null): bool
     {
         return !is_null($this->runCommand("start" . (!is_null($command) ? " {$command}" : '') . (!is_null($name) ? " --name {$name}" : '')));

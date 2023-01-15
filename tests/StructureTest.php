@@ -74,6 +74,19 @@ it('is pid test', function () {
     }
 });
 
+it('is link test', function () {
+    if (pm2()->isInstall()) {
+        $args = ['eorx7dembh6xc68', 'u6275tlrszsh3hy', 'MACHINE_NAME'];
+        expect(pm2()->link(...$args))->toBeBool();
+    }
+});
+
+it('is unlink test', function () {
+    if (pm2()->isInstall()) {
+        expect(pm2()->unlink())->toBeBool();
+    }
+});
+
 it('is kill test', function () {
     if (pm2()->isInstall()) {
         pm2()->start("ls -la", $name = uniqid());
