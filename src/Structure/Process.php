@@ -20,5 +20,35 @@ final class Process
         $instance->monit = ($data['monit'] ?? null) !== null ? Monit::fromJson($data['monit']) : null;
         return $instance;
     }
+
+    public function start(): bool
+    {
+        return pm2()->start($this->name);
+    }
+
+    public function stop(): bool
+    {
+        return pm2()->stop($this->name);
+    }
+
+    public function restart(): bool
+    {
+        return pm2()->restart($this->name);
+    }
+
+    public function delete(): bool
+    {
+        return pm2()->delete($this->name);
+    }
+
+    public function logErr(): string
+    {
+        return pm2()->logErr($this->name);
+    }
+
+    public function logOut(): string
+    {
+        return pm2()->logOut($this->name);
+    }
 }
 
