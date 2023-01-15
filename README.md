@@ -37,14 +37,14 @@ pm2()->list(string $sortField = 'name', bool $desc = true): array
 | Parameter | Type       | Description                                             |
 |-----------|------------|---------------------------------------------------------|
 | `sortField` | **string** | Sort field: `name, id, pid, memory, cpu, status, uptime` |
-| `desc` | **bool**   | Sort order |
+| `desc` | **bool**   | Sort order is descending |
 
 
 ---
 ### link
 Connect your server to your dashboard and start collecting metrics
 ```php
-pm2()->link(string publicKey, string secretKey, string|null machineName = null): bool
+pm2()->link(string $publicKey, string $secretKey, string|null $machineName = null): bool
 ```
 
 **Parameters:**
@@ -57,152 +57,159 @@ pm2()->link(string publicKey, string secretKey, string|null machineName = null):
 
 ---
 ### unlink
-
+Disconnect your server from your metrics dashboard
 ```php
 pm2()->unlink(): bool
 ```
 
 ---
 ### start
-
+Start command with specifics options or start a `ecosystem.config.js`
 ```php
-pm2()->start(string|null command = null, string|null name = null): bool
+pm2()->start(string $command = null, array $options = []): bool
 ```
 
 **Parameters:**
 
 | Parameter | Type       | Description |
 |-----------|------------|-------------|
-| `command` | **?string** ||
-| `name` | **?string** ||
+| `command` | **?string** | Command to run in pm2 |
+| `options` | **array** | Options to start pm2 command [Guide](https://pm2.keymetrics.io/docs/usage/quick-start/#start-an-app) like `['name' => 'process-1', 'no-autorestart']` |
 
 ---
-### showBy
-
+### findBy
+Find specific process
 ```php
-pm2()->showBy(string key, string value): \JalalLinuX\Pm2\Structure\Process|null
+pm2()->findBy(string $key, string $value): \JalalLinuX\Pm2\Structure\Process|null
 ```
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `key` | **string** ||
-| `value` | **string** ||
+| `key` | **string** | Key of property to find process |
+| `value` | **string** | Value of key |
 
 ---
 ### kill
-
+kill daemon
 ```php
 pm2()->kill(): bool
 ```
 
 ---
 ### pid
-
+Fetch pid of specific process
 ```php
-pm2()->pid(string name): int|null
+pm2()->pid(string $name): int|null
 ```
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `name` | **string** ||
+| `name` | **string** | Name of process |
 
 ---
 ### flush
-
+Empty all log files
 ```php
 pm2()->flush(): bool
 ```
 
 ---
 ### update
-
+Update in memory pm2
 ```php
 pm2()->update(): mixed
 ```
 
 ---
 ### stopAll
-
+Stop all processes
 ```php
 pm2()->stopAll(): bool
 ```
 
 ---
 ### deleteAll
-
+Will stop and delete all processes from pm2 list
 ```php
 pm2()->deleteAll(): bool
 ```
 
 ---
 ### stop
-
+Stop specific process
 ```php
-pm2()->stop(string idOrName): bool
+pm2()->stop(string $idOrName): bool
 ```
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `idOrName` | **string** ||
+| `idOrName` | **string** | Id or name of process|
 
 ---
 ### delete
-
+Delete specific process
 ```php
-pm2()->delete(string idOrName): bool
+pm2()->delete(string $idOrName): bool
 ```
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `idOrName` | **string** ||
+| `idOrName` | **string** | Id or name of process |
 
 ---
 ### save
-
+Freeze a process list for automatic respawn
 ```php
-pm2()->save(bool force = true): bool
+pm2()->save(bool $force = true): bool
 ```
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `force` | **bool** ||
+| `force` | **bool** | Force save list |
 
 ---
 ### version
-
+Fetch installed pm2 version
 ```php
 pm2()->version(): string
 ```
 
 ---
 ### install
-
+Install **PM2** (Requirements: `node`, `npm`)
 ```php
-pm2()->install(string version = 'latest'): false|string|null
+pm2()->install(string $version = 'latest'): false|string|null
 ```
 
 **Parameters:**
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `version` | **string** ||
+| `version` | **string** | Specific version |
 
 ---
 ### isInstall
-
+Check if the **PM2** is installed
 ```php
-pm2()->isInstall(bool forceInstall = false, string version = 'latest'): bool
+pm2()->isInstall(bool $forceInstall = false, string $version = 'latest'): bool
 ```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `forceInstall` | **bool** | Install pm2 if is not installed |
+| `version` | **string** | Specific version |
 
 
 ## Testing
@@ -214,10 +221,6 @@ composer test
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 
 ## Credits
 

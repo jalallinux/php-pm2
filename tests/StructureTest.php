@@ -46,37 +46,37 @@ it('is flush test', function () {
     }
 });
 
-it('is showBy test', function () {
+it('is findBy test', function () {
     if (pm2()->isInstall()) {
-        pm2()->start("ls -la", $name = uniqid());
-        expect(pm2()->showBy('name', $name))->toBeInstanceOf(Process::class);
+        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
+        expect(pm2()->findBy('name', $name))->toBeInstanceOf(Process::class);
     }
 });
 
 it('is delete test', function () {
     if (pm2()->isInstall()) {
-        pm2()->start("ls -la", $name = uniqid());
+        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
         expect(pm2()->delete($name))->toBeTrue();
     }
 });
 
 it('is stop test', function () {
     if (pm2()->isInstall()) {
-        pm2()->start("ls -la", $name = uniqid());
+        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
         expect(pm2()->stop($name))->toBeTrue();
     }
 });
 
 it('is pid test', function () {
     if (pm2()->isInstall()) {
-        pm2()->start("ls -la", $name = uniqid());
+        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
         expect(pm2()->pid($name))->toBeInt();
     }
 });
 
 it('is link test', function () {
     if (pm2()->isInstall()) {
-        $args = ['eorx7dembh6xc68', 'u6275tlrszsh3hy', 'MACHINE_NAME'];
+        $args = ['PUBLIC_KEY', 'SECRET_KEY', 'MACHINE_NAME'];
         expect(pm2()->link(...$args))->toBeBool();
     }
 });
@@ -89,7 +89,7 @@ it('is unlink test', function () {
 
 it('is kill test', function () {
     if (pm2()->isInstall()) {
-        pm2()->start("ls -la", $name = uniqid());
+        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
         expect(pm2()->kill())->toBeTrue();
         expect(pm2()->list())->toBeArray()->toBeEmpty();
     }

@@ -39,12 +39,16 @@ class Pm2
 
     /**
      * @param string|null $command
-     * @param string|null $name
+     * @param array $options
      * @return bool
      */
-    public function start(string $command = null, string $name = null): bool
+    public function start(string $command = null, array $options = []): bool
     {
-        return !is_null($this->runCommand("start" . (!is_null($command) ? " {$command}" : '') . (!is_null($name) ? " --name {$name}" : '')));
+        $options = implode(' ', array_map(function ($k, $v) {
+            return is_integer($k) ? "--{$v}" : "--{$k}={$v}";
+        }, array_keys($options), $options));
+
+        return !is_null($this->runCommand("start" . (!is_null($command) ? " \"{$command}\" {$options}" : '')));
     }
 
     /**
@@ -52,7 +56,7 @@ class Pm2
      * @param string $value
      * @return Process|null
      */
-    public function showBy(string $key, string $value): ?Process
+    public function findBy(string $key, string $value): ?Process
     {
         foreach ($this->list() as $item) {
             if ($item->{$key} == $value)
