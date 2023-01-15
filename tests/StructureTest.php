@@ -9,7 +9,7 @@ afterAll(function () {
     pm2()->save();
 });
 
-it('list structure test', function () {
+it('is list structure test', function () {
     if (pm2()->isInstall()) {
         expect(pm2()->list())
             ->toBeArray()
@@ -17,7 +17,13 @@ it('list structure test', function () {
     }
 });
 
-it('version test', function () {
+it('is startup test', function () {
+    if (pm2()->isInstall()) {
+        expect(pm2()->startup())->toBeTrue();
+    }
+});
+
+it('is version test', function () {
     if (pm2()->isInstall()) {
         expect(pm2()->version())->toBeString();
     }

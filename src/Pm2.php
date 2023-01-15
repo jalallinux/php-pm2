@@ -44,10 +44,7 @@ class Pm2
      */
     public function start(string $command = null, array $options = []): bool
     {
-        $options = implode(' ', array_map(function ($k, $v) {
-            return is_integer($k) ? "--{$v}" : "--{$k}={$v}";
-        }, array_keys($options), $options));
-
+        $options = $this->makeOptions($options);
         return !is_null($this->runCommand("start" . (!is_null($command) ? " \"{$command}\" {$options} --update-env" : '')));
     }
 
@@ -195,6 +192,15 @@ class Pm2
     }
 
     /**
+     * @return bool
+     */
+    public function startup(): bool
+    {
+        $this->runCommand("startup --update-env");
+        return $this->save();
+    }
+
+    /**
      * @return string
      */
     public function version(): string
@@ -224,6 +230,13 @@ class Pm2
             return $this->isInstall();
         }
         return $isInstall;
+    }
+
+    protected function makeOptions(array $options): string
+    {
+        return implode(' ', array_map(function ($k, $v) {
+            return is_integer($k) ? "--{$v}" : "--{$k}={$v}";
+        }, array_keys($options), $options));
     }
 
     protected function json(string $sortField, bool $desc = true): array

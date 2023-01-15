@@ -226,6 +226,13 @@ pm2()->logErr(string $idOrName = null, int $lines = 100): string
 | `lines` | **int** | To dig in older logs |
 
 ---
+### startup [:interrobang:](https://pm2.keymetrics.io/docs/usage/quick-start/#setup-startup-script)
+Generate an active startup script
+```php
+pm2()->startup(): bool
+```
+
+---
 ### version
 Fetch installed pm2 version
 ```php
