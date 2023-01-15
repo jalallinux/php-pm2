@@ -5,86 +5,164 @@ namespace JalalLinuX\Pm2\Structure;
 final class Env
 {
     public ?string $uniqueId;
-    public ?string $pm2Home;
-    public ?string $shell;
-    public ?string $sessionManager;
-    public ?string $qtAccessibility;
-    public ?string $snapRevision;
-    public ?string $xdgConfigDirs;
-    public ?string $xdgMenuPrefix;
-    public ?string $gnomeDesktopSessionId;
-    public ?string $snapRealHome;
-    public ?string $terminalEmulator;
-    public ?string $snapUserCommon;
-    public ?string $lcAddress;
-    public ?string $gnomeShellSessionMode;
-    public ?string $lcName;
-    public ?string $sshAuthSock;
-    public ?string $termSessionId;
-    public ?string $snapInstanceKey;
-    public ?string $xmodifiers;
-    public ?string $desktopSession;
-    public ?string $lcMonetary;
-    public ?string $sshAgentPid;
-    public ?string $bamfDesktopFileHint;
-    public ?string $gtkModules;
-    public ?string $pwd;
-    public ?string $xdgSessionDesktop;
-    public ?string $logname;
-    public ?string $xdgSessionType;
-    public ?string $gpgAgentInfo;
-    public ?string $xauthority;
-    public ?string $desktopStartupId;
-    public ?string $snapContext;
-    public ?string $gjsDebugTopics;
-    public ?string $windowpath;
-    public ?string $home;
-    public ?string $username;
-    public ?string $imConfigPhase;
-    public ?string $lang;
-    public ?string $lcPaper;
-    public ?string $lsColors;
-    public ?string $xdgCurrentDesktop;
-    public ?string $snapArch;
-    public ?string $snapInstanceName;
-    public ?string $snapUserData;
-    public ?string $compWordbreaks;
-    public ?string $invocationId;
-    public ?string $managerpid;
-    public ?string $snapReexec;
-    public ?string $gjsDebugOutput;
-    public ?string $lessclose;
-    public ?string $xdgSessionClass;
-    public ?string $term;
-    public ?string $lcIdentification;
-    public ?string $lessopen;
-    public ?string $user;
-    public ?string $snap;
-    public ?string $snapCommon;
-    public ?string $snapVersion;
-    public ?string $display;
-    public ?string $shlvl;
-    public ?string $snapLibraryPath;
-    public ?string $snapCookie;
-    public ?string $lcTelephone;
-    public ?string $qtImModule;
-    public ?string $lcMeasurement;
-    public ?string $snapData;
-    public ?string $xdgRuntimeDir;
-    public ?string $lcTime;
-    public ?string $snapName;
-    public ?string $journalStream;
-    public ?string $xdgDataDirs;
-    public ?string $path;
-    public ?string $gdmsession;
-    public ?string $dbusSessionBusAddress;
-    public ?string $gioLaunchedDesktopFilePid;
-    public ?string $gioLaunchedDesktopFile;
-    public ?string $lcNumeric;
-    public ?string $_;
-	public ?string $pm2Usage;
 
-	public static function fromJson(array $data): self
+    public ?string $pm2Home;
+
+    public ?string $shell;
+
+    public ?string $sessionManager;
+
+    public ?string $qtAccessibility;
+
+    public ?string $snapRevision;
+
+    public ?string $xdgConfigDirs;
+
+    public ?string $xdgMenuPrefix;
+
+    public ?string $gnomeDesktopSessionId;
+
+    public ?string $snapRealHome;
+
+    public ?string $terminalEmulator;
+
+    public ?string $snapUserCommon;
+
+    public ?string $lcAddress;
+
+    public ?string $gnomeShellSessionMode;
+
+    public ?string $lcName;
+
+    public ?string $sshAuthSock;
+
+    public ?string $termSessionId;
+
+    public ?string $snapInstanceKey;
+
+    public ?string $xmodifiers;
+
+    public ?string $desktopSession;
+
+    public ?string $lcMonetary;
+
+    public ?string $sshAgentPid;
+
+    public ?string $bamfDesktopFileHint;
+
+    public ?string $gtkModules;
+
+    public ?string $pwd;
+
+    public ?string $xdgSessionDesktop;
+
+    public ?string $logname;
+
+    public ?string $xdgSessionType;
+
+    public ?string $gpgAgentInfo;
+
+    public ?string $xauthority;
+
+    public ?string $desktopStartupId;
+
+    public ?string $snapContext;
+
+    public ?string $gjsDebugTopics;
+
+    public ?string $windowpath;
+
+    public ?string $home;
+
+    public ?string $username;
+
+    public ?string $imConfigPhase;
+
+    public ?string $lang;
+
+    public ?string $lcPaper;
+
+    public ?string $lsColors;
+
+    public ?string $xdgCurrentDesktop;
+
+    public ?string $snapArch;
+
+    public ?string $snapInstanceName;
+
+    public ?string $snapUserData;
+
+    public ?string $compWordbreaks;
+
+    public ?string $invocationId;
+
+    public ?string $managerpid;
+
+    public ?string $snapReexec;
+
+    public ?string $gjsDebugOutput;
+
+    public ?string $lessclose;
+
+    public ?string $xdgSessionClass;
+
+    public ?string $term;
+
+    public ?string $lcIdentification;
+
+    public ?string $lessopen;
+
+    public ?string $user;
+
+    public ?string $snap;
+
+    public ?string $snapCommon;
+
+    public ?string $snapVersion;
+
+    public ?string $display;
+
+    public ?string $shlvl;
+
+    public ?string $snapLibraryPath;
+
+    public ?string $snapCookie;
+
+    public ?string $lcTelephone;
+
+    public ?string $qtImModule;
+
+    public ?string $lcMeasurement;
+
+    public ?string $snapData;
+
+    public ?string $xdgRuntimeDir;
+
+    public ?string $lcTime;
+
+    public ?string $snapName;
+
+    public ?string $journalStream;
+
+    public ?string $xdgDataDirs;
+
+    public ?string $path;
+
+    public ?string $gdmsession;
+
+    public ?string $dbusSessionBusAddress;
+
+    public ?string $gioLaunchedDesktopFilePid;
+
+    public ?string $gioLaunchedDesktopFile;
+
+    public ?string $lcNumeric;
+
+    public ?string $_;
+
+    public ?string $pm2Usage;
+
+    public static function fromJson(array $data): self
     {
         $instance = new self();
         $instance->uniqueId = $data['unique_id'] ?? null;
@@ -166,6 +244,7 @@ final class Env
         $instance->lcNumeric = $data['LC_NUMERIC'] ?? null;
         $instance->_ = $data['_'] ?? null;
         $instance->pm2Usage = $data['PM2_USAGE'] ?? null;
+
         return $instance;
     }
 }

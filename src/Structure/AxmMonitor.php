@@ -10,6 +10,7 @@ final class AxmMonitor
     {
         $instance = new self();
         $instance->data = $data;
+
         return $instance;
     }
 }

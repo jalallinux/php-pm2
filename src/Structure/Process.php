@@ -5,9 +5,13 @@ namespace JalalLinuX\Pm2\Structure;
 final class Process
 {
     public ?int $pid;
+
     public ?string $name;
+
     public ?Pm2Env $pm2Env;
+
     public ?int $pmId;
+
     public ?Monit $monit;
 
     public static function fromJson(array $data): self
@@ -18,6 +22,7 @@ final class Process
         $instance->pm2Env = ($data['pm2_env'] ?? null) !== null ? Pm2Env::fromJson($data['pm2_env']) : null;
         $instance->pmId = $data['pm_id'] ?? null;
         $instance->monit = ($data['monit'] ?? null) !== null ? Monit::fromJson($data['monit']) : null;
+
         return $instance;
     }
 
@@ -51,4 +56,3 @@ final class Process
         return pm2()->logOut($this->name);
     }
 }
-

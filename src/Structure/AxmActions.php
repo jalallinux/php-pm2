@@ -10,6 +10,7 @@ final class AxmActions
     {
         $instance = new self();
         $instance->data = $data;
+
         return $instance;
     }
 }

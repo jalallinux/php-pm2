@@ -10,6 +10,7 @@ final class AxmDynamic
     {
         $instance = new self();
         $instance->data = $data;
+
         return $instance;
     }
 }

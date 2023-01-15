@@ -10,6 +10,7 @@ final class AxmOptions
     {
         $instance = new self();
         $instance->data = $data;
+
         return $instance;
     }
 }
