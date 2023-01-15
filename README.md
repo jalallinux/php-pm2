@@ -29,7 +29,7 @@ composer require jalallinux/php-pm2
 ### list [:question:](https://pm2.keymetrics.io/docs/usage/quick-start/#list-managed-applications)
 Fetch list all running applications
 ```php
-pm2()->list(string $sortField = 'name', bool $desc = true): array
+pm2()->list(string $sortField = 'name', bool $desc = true): array<Process>
 ```
 
 **Parameters:**

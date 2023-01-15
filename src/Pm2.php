@@ -9,7 +9,7 @@ class Pm2
     /**
      * @param string $sortField
      * @param bool $desc
-     * @return array
+     * @return array<Process>
      */
     public function list(string $sortField = 'name', bool $desc = true): array
     {
