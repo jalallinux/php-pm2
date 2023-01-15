@@ -70,9 +70,14 @@ class Pm2
         return shell_exec("npm install -g pm2@{$version}");
     }
 
-    public function isInstall(): bool
+    public function isInstall(bool $forceInstall = false, string $version = 'latest'): bool
     {
-        return !is_null($this->runCommand('--version'));
+        $isInstall = !is_null($this->runCommand('--version'));
+        if (!$isInstall && $forceInstall) {
+            $this->install($version);
+            return $this->isInstall();
+        }
+        return $isInstall;
     }
 
     protected function runCommand(string $command)
