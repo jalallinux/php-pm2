@@ -20,26 +20,25 @@ composer require jalallinux/php-pm2
 * Full name: \JalalLinuX\Pm2\Pm2
 
 ### list
-
+Fetch list of process in pm2
 ```php
 pm2()->list(): array
 ```
 
 ---
 ### link
-
-
+Connect your server to your dashboard and start collecting metrics
 ```php
 pm2()->link(string publicKey, string secretKey, string|null machineName = null): bool
 ```
 
 **Parameters:**
 
-| Parameter | Type        | Description |
-|-----------|-------------|-------------|
-| `publicKey` | **string**  ||
-| `secretKey` | **string**  ||
-| `machineName` | **?string** ||
+| Parameter | Type        | Description                   |
+|-----------|-------------|-------------------------------|
+| `publicKey` | **string**  | PM2 account `PUBLIC_KEY` |
+| `secretKey` | **string**  | PM2 account `SECRET_KEY` |
+| `machineName` | **?string** | Machine name on the dashboard |
 
 ---
 ### unlink
