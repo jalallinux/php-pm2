@@ -46,10 +46,10 @@ it('is flush test', function () {
     }
 });
 
-it('is findBy test', function () {
+it('is showBy test', function () {
     if (pm2()->isInstall()) {
         pm2()->start("ls -la", $name = uniqid());
-        expect(pm2()->findBy('name', $name))->toBeInstanceOf(Process::class);
+        expect(pm2()->showBy('name', $name))->toBeInstanceOf(Process::class);
     }
 });
 
@@ -64,5 +64,12 @@ it('is stop test', function () {
     if (pm2()->isInstall()) {
         pm2()->start("ls -la", $name = uniqid());
         expect(pm2()->stop($name))->toBeTrue();
+    }
+});
+
+it('is pid test', function () {
+    if (pm2()->isInstall()) {
+        pm2()->start("ls -la", $name = uniqid());
+        expect(pm2()->pid($name))->toBeInt();
     }
 });

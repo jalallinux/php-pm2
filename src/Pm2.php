@@ -18,11 +18,20 @@ class Pm2
         return !is_null($this->runCommand("start" . (!is_null($command) ? " {$command}" : '') . (!is_null($name) ? " --name {$name}" : '')));
     }
 
-    public function findBy(string $key, string $value): ?Process
+    public function showBy(string $key, string $value): ?Process
     {
         foreach ($this->list() as $item) {
             if ($item->{$key} == $value)
                 return $item;
+        }
+        return null;
+    }
+
+    public function pid(string $name): ?int
+    {
+        foreach ($this->list() as $item) {
+            if ($item->name == $name)
+                return intval($item->pid);
         }
         return null;
     }
