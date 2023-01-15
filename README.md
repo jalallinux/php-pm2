@@ -20,10 +20,18 @@ composer require jalallinux/php-pm2
 * Full name: \JalalLinuX\Pm2\Pm2
 
 ### list
-Fetch list of process in pm2
+Fetch list all running applications
 ```php
-pm2()->list(): array
+pm2()->list(string $sortField = 'name', bool $desc = true): array
 ```
+
+**Parameters:**
+
+| Parameter | Type       | Description                                             |
+|-----------|------------|---------------------------------------------------------|
+| `sortField` | **string** | Sort field: `name, id, pid, memory, cpu, status, uptime` |
+| `desc` | **bool**   | Sort order |
+
 
 ---
 ### link

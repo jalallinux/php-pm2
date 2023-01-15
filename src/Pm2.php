@@ -7,11 +7,13 @@ use JalalLinuX\Pm2\Structure\Process;
 class Pm2
 {
     /**
+     * @param string $sortField
+     * @param bool $desc
      * @return array
      */
-    public function list(): array
+    public function list(string $sortField = 'name', bool $desc = true): array
     {
-        return array_map(static fn($rec) => Process::fromJson($rec), $this->json());
+        return array_map(static fn($rec) => Process::fromJson($rec), $this->json($sortField, $desc));
     }
 
     /**
@@ -179,9 +181,9 @@ class Pm2
         return $isInstall;
     }
 
-    protected function json(): array
+    protected function json(string $sortField, bool $desc = true): array
     {
-        return json_decode($this->runCommand('jlist'), true) ?? [];
+        return json_decode($this->runCommand("jlist --sort {$sortField}:" . ($desc ? 'desc' : 'asc')), true) ?? [];
     }
 
     protected function runCommand(string $command)
