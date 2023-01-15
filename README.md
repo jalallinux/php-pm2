@@ -15,10 +15,181 @@ composer require jalallinux/php-pm2
 
 ## Usage
 
+### Pm2
+
+* Full name: \JalalLinuX\Pm2\Pm2
+
+### list
+
 ```php
-$skeleton = new JalalLinuX\Pm2();
-echo $skeleton->echoPhrase('Hello, JalalLinuX!');
+pm2()->list(): array
 ```
+
+---
+### link
+
+
+```php
+pm2()->link(string publicKey, string secretKey, string|null machineName = null): bool
+```
+
+**Parameters:**
+
+| Parameter | Type        | Description |
+|-----------|-------------|-------------|
+| `publicKey` | **string**  ||
+| `secretKey` | **string**  ||
+| `machineName` | **?string** ||
+
+---
+### unlink
+
+```php
+pm2()->unlink(): bool
+```
+
+---
+### start
+
+```php
+pm2()->start(string|null command = null, string|null name = null): bool
+```
+
+**Parameters:**
+
+| Parameter | Type       | Description |
+|-----------|------------|-------------|
+| `command` | **?string** ||
+| `name` | **?string** ||
+
+---
+### showBy
+
+```php
+pm2()->showBy(string key, string value): \JalalLinuX\Pm2\Structure\Process|null
+```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `key` | **string** ||
+| `value` | **string** ||
+
+---
+### kill
+
+```php
+pm2()->kill(): bool
+```
+
+---
+### pid
+
+```php
+pm2()->pid(string name): int|null
+```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `name` | **string** ||
+
+---
+### flush
+
+```php
+pm2()->flush(): bool
+```
+
+---
+### update
+
+```php
+pm2()->update(): mixed
+```
+
+---
+### stopAll
+
+```php
+pm2()->stopAll(): bool
+```
+
+---
+### deleteAll
+
+```php
+pm2()->deleteAll(): bool
+```
+
+---
+### stop
+
+```php
+pm2()->stop(string idOrName): bool
+```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `idOrName` | **string** ||
+
+---
+### delete
+
+```php
+pm2()->delete(string idOrName): bool
+```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `idOrName` | **string** ||
+
+---
+### save
+
+```php
+pm2()->save(bool force = true): bool
+```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `force` | **bool** ||
+
+---
+### version
+
+```php
+pm2()->version(): string
+```
+
+---
+### install
+
+```php
+pm2()->install(string version = 'latest'): false|string|null
+```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `version` | **string** ||
+
+---
+### isInstall
+
+```php
+pm2()->isInstall(bool forceInstall = false, string version = 'latest'): bool
+```
+
 
 ## Testing
 
