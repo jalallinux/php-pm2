@@ -2,7 +2,7 @@
 
 namespace JalalLinuX\Pm2\Structure;
 
-final class AxmDynamic
+final class AxmActions
 {
     public ?array $data;
 
