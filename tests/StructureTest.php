@@ -73,3 +73,11 @@ it('is pid test', function () {
         expect(pm2()->pid($name))->toBeInt();
     }
 });
+
+it('is kill test', function () {
+    if (pm2()->isInstall()) {
+        pm2()->start("ls -la", $name = uniqid());
+        expect(pm2()->kill())->toBeTrue();
+        expect(pm2()->list())->toBeArray()->toBeEmpty();
+    }
+});

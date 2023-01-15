@@ -8,9 +8,7 @@ class Pm2
 {
     public function list(): array
     {
-        return array_map(static function($rec) {
-            return Process::fromJson($rec);
-        }, json_decode(shell_exec('pm2 jlist'), true));
+        return array_map(static fn($rec) => Process::fromJson($rec), $this->json());
     }
 
     public function start(string $command = null, string $name = null): bool
@@ -25,6 +23,11 @@ class Pm2
                 return $item;
         }
         return null;
+    }
+
+    public function kill(): bool
+    {
+        return !is_null($this->runCommand('kill'));
     }
 
     public function pid(string $name): ?int
@@ -97,6 +100,11 @@ class Pm2
             return $this->isInstall();
         }
         return $isInstall;
+    }
+
+    protected function json(): array
+    {
+        return json_decode($this->runCommand('jlist'), true) ?? [];
     }
 
     protected function runCommand(string $command)
