@@ -132,6 +132,13 @@ pm2()->stopAll(): bool
 ```
 
 ---
+### restartAll
+Restart all processes
+```php
+pm2()->restartAll(): bool
+```
+
+---
 ### deleteAll
 Will stop and delete all processes from pm2 list
 ```php
@@ -143,6 +150,19 @@ pm2()->deleteAll(): bool
 Stop specific process
 ```php
 pm2()->stop(string $idOrName): bool
+```
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `idOrName` | **string** | Id or name of process|
+
+---
+### restart
+Restart specific process
+```php
+pm2()->restart(string $idOrName): bool
 ```
 
 **Parameters:**
