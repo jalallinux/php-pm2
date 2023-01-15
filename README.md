@@ -1,7 +1,7 @@
 <div align="center">
 
 <a href="https://github.com/Unitech/pm2">  
-    <p align="center"><img src="pm2-logo.png" width="100%"></p>
+    <p align="center"><img src=".github/pm2-logo.png" width="100%"></p>
 </a> 
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jalallinux/php-pm2.svg?style=flat-square)](https://packagist.org/packages/jalallinux/php-pm2)
