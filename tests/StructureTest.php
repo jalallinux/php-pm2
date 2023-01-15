@@ -46,10 +46,10 @@ it('is flush test', function () {
     }
 });
 
-it('is TESTY', function () {
+it('is findBy test', function () {
     if (pm2()->isInstall()) {
         $name = 'my-test-process-name';
         pm2()->start("ls -la", $name);
-        expect(pm2()->findBy('pid', 0))->toBeInstanceOf(Process::class);
+        expect(pm2()->findBy('name', $name))->toBeInstanceOf(Process::class);
     }
 });
