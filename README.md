@@ -26,7 +26,7 @@ composer require jalallinux/php-pm2
 
 * Full name: \JalalLinuX\Pm2\Pm2
 
-### list
+### list [:question:](https://pm2.keymetrics.io/docs/usage/quick-start/#list-managed-applications)
 Fetch list all running applications
 ```php
 pm2()->list(string $sortField = 'name', bool $desc = true): array
@@ -41,7 +41,7 @@ pm2()->list(string $sortField = 'name', bool $desc = true): array
 
 
 ---
-### link
+### link [:question:]()
 Connect your server to your dashboard and start collecting metrics
 ```php
 pm2()->link(string $publicKey, string $secretKey, string|null $machineName = null): bool
@@ -56,14 +56,14 @@ pm2()->link(string $publicKey, string $secretKey, string|null $machineName = nul
 | `machineName` | **?string** | Machine name on the dashboard |
 
 ---
-### unlink
+### unlink [:question:]()
 Disconnect your server from your metrics dashboard
 ```php
 pm2()->unlink(): bool
 ```
 
 ---
-### start
+### start [:question:](https://pm2.keymetrics.io/docs/usage/quick-start/#start-an-app)
 Start command with specifics options or start a `ecosystem.config.js`
 ```php
 pm2()->start(string $command = null, array $options = []): bool
@@ -77,7 +77,7 @@ pm2()->start(string $command = null, array $options = []): bool
 | `options` | **array** | Options to start pm2 command [Guide](https://pm2.keymetrics.io/docs/usage/quick-start/#start-an-app) like `['name' => 'process-1', 'no-autorestart']` |
 
 ---
-### findBy
+### findBy [:question:](https://pm2.keymetrics.io/docs/usage/process-management/#showing-application-metadata)
 Find specific process
 ```php
 pm2()->findBy(string $key, string $value): \JalalLinuX\Pm2\Structure\Process|null
@@ -111,42 +111,42 @@ pm2()->pid(string $name): int|null
 | `name` | **string** | Name of process |
 
 ---
-### flush
+### flush [:question:](https://pm2.keymetrics.io/docs/usage/log-management/#flushing-logs)
 Empty all log files
 ```php
 pm2()->flush(): bool
 ```
 
 ---
-### update
+### update [:question:](https://pm2.keymetrics.io/docs/usage/update-pm2/#process-to-update-pm2)
 Update in memory pm2
 ```php
 pm2()->update(): mixed
 ```
 
 ---
-### stopAll
+### stopAll [:question:](https://pm2.keymetrics.io/docs/usage/process-management/#stop)
 Stop all processes
 ```php
 pm2()->stopAll(): bool
 ```
 
 ---
-### restartAll
+### restartAll [:question:](https://pm2.keymetrics.io/docs/usage/process-management/#restart)
 Restart all processes
 ```php
 pm2()->restartAll(): bool
 ```
 
 ---
-### deleteAll
+### deleteAll [:question:](https://pm2.keymetrics.io/docs/usage/process-management/#delete)
 Will stop and delete all processes from pm2 list
 ```php
 pm2()->deleteAll(): bool
 ```
 
 ---
-### stop
+### stop [:question:](https://pm2.keymetrics.io/docs/usage/process-management/#stop)
 Stop specific process
 ```php
 pm2()->stop(string $idOrName): bool
@@ -159,7 +159,7 @@ pm2()->stop(string $idOrName): bool
 | `idOrName` | **string** | Id or name of process|
 
 ---
-### restart
+### restart [:question:](https://pm2.keymetrics.io/docs/usage/process-management/#restart)
 Restart specific process
 ```php
 pm2()->restart(string $idOrName): bool
@@ -172,7 +172,7 @@ pm2()->restart(string $idOrName): bool
 | `idOrName` | **string** | Id or name of process|
 
 ---
-### delete
+### delete [:question:](https://pm2.keymetrics.io/docs/usage/process-management/#delete)
 Delete specific process
 ```php
 pm2()->delete(string $idOrName): bool
@@ -185,7 +185,7 @@ pm2()->delete(string $idOrName): bool
 | `idOrName` | **string** | Id or name of process |
 
 ---
-### save
+### save [:question:](https://pm2.keymetrics.io/docs/usage/startup/#saving-the-app-list-to-be-restored-at-reboot)
 Freeze a process list for automatic respawn
 ```php
 pm2()->save(bool $force = true): bool
@@ -198,7 +198,7 @@ pm2()->save(bool $force = true): bool
 | `force` | **bool** | Force save list |
 
 ---
-### logOut
+### logOut [:question:](https://pm2.keymetrics.io/docs/usage/log-management/#log-views)
 Display all processes output logs
 ```php
 pm2()->logOut(string $idOrName = null, int $lines = 100): string
@@ -212,7 +212,7 @@ pm2()->logOut(string $idOrName = null, int $lines = 100): string
 | `lines` | **int** | To dig in older logs |
 
 ---
-### logErr
+### logErr [:question:](https://pm2.keymetrics.io/docs/usage/log-management/#log-views)
 Display all processes error logs
 ```php
 pm2()->logErr(string $idOrName = null, int $lines = 100): string
@@ -226,21 +226,21 @@ pm2()->logErr(string $idOrName = null, int $lines = 100): string
 | `lines` | **int** | To dig in older logs |
 
 ---
-### startup [:interrobang:](https://pm2.keymetrics.io/docs/usage/quick-start/#setup-startup-script)
+### startup [:question:](https://pm2.keymetrics.io/docs/usage/quick-start/#setup-startup-script)
 Generate an active startup script
 ```php
 pm2()->startup(): bool
 ```
 
 ---
-### version
+### version [:question:]()
 Fetch installed pm2 version
 ```php
 pm2()->version(): string
 ```
 
 ---
-### install
+### install [:question:](https://pm2.keymetrics.io/docs/usage/update-pm2/#process-to-update-pm2)
 Install **PM2** (Requirements: `node`, `npm`)
 ```php
 pm2()->install(string $version = 'latest'): false|string|null
