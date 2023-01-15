@@ -1,13 +1,16 @@
+<div align="center">
+
+<a href="https://github.com/Unitech/pm2">  
+    <p align="center"><img src="pm2-logo.png" width="100%"></p>
+</a> 
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/jalallinux/php-pm2.svg?style=flat-square)](https://packagist.org/packages/jalallinux/php-pm2)
 [![Tests](https://github.com/jalallinux/php-pm2/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/jalallinux/php-pm2/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/jalallinux/php-pm2.svg?style=flat-square)](https://packagist.org/packages/jalallinux/php-pm2)
-<!--delete-->
 
-<a href="https://github.com/ShinobiCCTV/Shinobi">  
-    <p align="center"><img src="pm2-logo.png" width="100%"></p>    
-</a> 
+#### Use and manage pm2 in php
 
-Manage pm2 process in php
+</div>
 
 ## Installation
 
