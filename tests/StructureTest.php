@@ -48,8 +48,7 @@ it('is flush test', function () {
 
 it('is findBy test', function () {
     if (pm2()->isInstall()) {
-        $name = 'my-test-process-name';
-        pm2()->start("ls -la", $name);
+        pm2()->start("ls -la", $name = uniqid());
         expect(pm2()->findBy('name', $name))->toBeInstanceOf(Process::class);
     }
 });
