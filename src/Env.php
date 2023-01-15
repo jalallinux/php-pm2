@@ -5,7 +5,6 @@ namespace JalalLinuX\Pm2;
 final class Env
 {
     public ?string $uniqueId;
-    public ?LsLa $lsLa;
     public ?string $pm2Home;
     public ?string $shell;
     public ?string $sessionManager;
@@ -89,7 +88,6 @@ final class Env
     {
         $instance = new self();
         $instance->uniqueId = $data['unique_id'] ?? null;
-        $instance->lsLa = ($data['ls -la'] ?? null) !== null ? LsLa::fromJson($data['ls -la']) : null;
         $instance->pm2Home = $data['PM2_HOME'] ?? null;
         $instance->shell = $data['SHELL'] ?? null;
         $instance->sessionManager = $data['SESSION_MANAGER'] ?? null;

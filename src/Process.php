@@ -2,7 +2,7 @@
 
 namespace JalalLinuX\Pm2;
 
-final class RootObject
+final class Process
 {
     public ?int $pid;
     public ?string $name;
