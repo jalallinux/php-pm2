@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "jalallinux/php-pm2",
+    "description": "Manage pm2 process in php",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "jalallinux",
+        "php-pm2"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/jalallinux/php-pm2",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "JalalLinuX",
+            "email": "smjjalalzadeh93@gmail.com",
             "role": "Developer"
         }
     ],
@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "JalalLinuX\\Pm2\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "JalalLinuX\\Pm2\\Tests\\": "tests"
         }
     },
     "scripts": {
