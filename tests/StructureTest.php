@@ -34,6 +34,12 @@ it('is stop all test', function () {
     }
 });
 
+it('is restart all test', function () {
+    if (pm2()->isInstall()) {
+        expect(pm2()->restartAll())->toBeBool();
+    }
+});
+
 it('is save test', function () {
     if (pm2()->isInstall()) {
         expect(pm2()->save())->toBeBool();
@@ -64,6 +70,13 @@ it('is stop test', function () {
     if (pm2()->isInstall()) {
         pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
         expect(pm2()->stop($name))->toBeTrue();
+    }
+});
+
+it('is restart test', function () {
+    if (pm2()->isInstall()) {
+        pm2()->start("ls -la", ['name' => ($name = uniqid()), 'no-autorestart']);
+        expect(pm2()->restart($name))->toBeTrue();
     }
 });
 

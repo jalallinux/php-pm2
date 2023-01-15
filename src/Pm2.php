@@ -24,7 +24,7 @@ class Pm2
      */
     public function link(string $publicKey, string $secretKey, string $machineName = null): bool
     {
-        $result = $this->runCommand("link {$secretKey} {$publicKey} {$machineName}");
+        $result = $this->runCommand("link {$secretKey} {$publicKey} {$machineName} --update-env");
         return strpos($result, 'activated!') !== false;
     }
 
@@ -33,7 +33,7 @@ class Pm2
      */
     public function unlink(): bool
     {
-        $result = $this->runCommand("link delete");
+        $result = $this->runCommand("link delete --update-env");
         return strpos($result, 'ended') !== false;
     }
 
@@ -48,7 +48,7 @@ class Pm2
             return is_integer($k) ? "--{$v}" : "--{$k}={$v}";
         }, array_keys($options), $options));
 
-        return !is_null($this->runCommand("start" . (!is_null($command) ? " \"{$command}\" {$options}" : '')));
+        return !is_null($this->runCommand("start" . (!is_null($command) ? " \"{$command}\" {$options} --update-env" : '')));
     }
 
     /**
@@ -70,7 +70,7 @@ class Pm2
      */
     public function kill(): bool
     {
-        return !is_null($this->runCommand('kill'));
+        return !is_null($this->runCommand('kill --update-env'));
     }
 
     /**
@@ -91,7 +91,7 @@ class Pm2
      */
     public function flush(): bool
     {
-        return !is_null($this->runCommand('flush'));
+        return !is_null($this->runCommand('flush --update-env'));
     }
 
     /**
@@ -99,7 +99,7 @@ class Pm2
      */
     public function update()
     {
-        return $this->runCommand('update');
+        return $this->runCommand('update --update-env');
     }
 
     /**
@@ -107,7 +107,19 @@ class Pm2
      */
     public function stopAll(): bool
     {
-        if (!is_null($this->runCommand('stop all'))) {
+        if (!is_null($this->runCommand('stop all --update-env'))) {
+            $this->save();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function restartAll(): bool
+    {
+        if (!is_null($this->runCommand('restart all --update-env'))) {
             $this->save();
             return true;
         }
@@ -119,7 +131,7 @@ class Pm2
      */
     public function deleteAll(): bool
     {
-        if (!is_null($this->runCommand('del all'))) {
+        if (!is_null($this->runCommand('del all --update-env'))) {
             $this->save();
             return true;
         }
@@ -132,7 +144,16 @@ class Pm2
      */
     public function stop(string $idOrName): bool
     {
-        return !is_null($this->runCommand("stop {$idOrName}"));
+        return !is_null($this->runCommand("stop {$idOrName} --update-env"));
+    }
+
+    /**
+     * @param string $idOrName
+     * @return bool
+     */
+    public function restart(string $idOrName): bool
+    {
+        return !is_null($this->runCommand("restart {$idOrName} --update-env"));
     }
 
     /**
@@ -141,7 +162,7 @@ class Pm2
      */
     public function delete(string $idOrName): bool
     {
-        return !is_null($this->runCommand("delete {$idOrName}"));
+        return !is_null($this->runCommand("delete {$idOrName} --update-env"));
     }
 
     /**
