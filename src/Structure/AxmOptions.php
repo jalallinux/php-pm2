@@ -1,8 +1,8 @@
 <?php
 
-namespace JalalLinuX\Pm2;
+namespace JalalLinuX\Pm2\Structure;
 
-final class AxmMonitor
+final class AxmOptions
 {
 
     public static function fromJson(array $data): self

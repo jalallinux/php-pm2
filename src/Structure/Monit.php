@@ -1,6 +1,6 @@
 <?php
 
-namespace JalalLinuX\Pm2;
+namespace JalalLinuX\Pm2\Structure;
 
 final class Monit
 {

@@ -1,9 +1,22 @@
 <?php
 
-namespace JalalLinuX\Pm2;
+namespace JalalLinuX\Pm2\Structure;
 
-final class Env
+final class Pm2Env
 {
+    public ?int $exitCode;
+    public $versioning;
+    public ?string $version;
+    public ?int $unstableRestarts;
+    public ?int $restartTime;
+    public ?int $pmId;
+    public $createdAt;
+    public ?AxmDynamic $axmDynamic;
+    public ?AxmOptions $axmOptions;
+    public ?AxmMonitor $axmMonitor;
+    public ?array $axmActions;
+    public ?int $pmUptime;
+    public ?string $status;
     public ?string $uniqueId;
     public ?string $pm2Home;
     public ?string $shell;
@@ -83,10 +96,51 @@ final class Env
     public ?string $lcNumeric;
     public ?string $_;
 	public ?string $pm2Usage;
+	public ?int $nodeAppInstance;
+	public ?bool $vizionRunning;
+	public ?bool $kmLink;
+	public ?string $pmPidPath;
+	public ?string $pmErrLogPath;
+	public ?string $pmOutLogPath;
+	public ?int $instances;
+	public ?string $execMode;
+	public ?string $execInterpreter;
+	public ?string $pmCwd;
+	public ?string $pmExecPath;
+	public ?array $nodeArgs;
+	public ?string $name;
+	public ?array $filterEnv;
+	public ?string $namespace;
+	/** @var string[]|null */
+	public ?array $args;
+	public ?Env $env;
+	public ?bool $mergeLogs;
+	public ?bool $vizion;
+	public ?bool $autorestart;
+	public ?bool $watch;
+	public ?string $instanceVar;
+	public ?bool $pmx;
+	public ?bool $automation;
+	public ?bool $treekill;
+	public ?bool $windowsHide;
+	public ?int $killRetryTime;
 
 	public static function fromJson(array $data): self
     {
         $instance = new self();
+        $instance->exitCode = $data['exit_code'] ?? null;
+        $instance->versioning = $data['versioning'] ?? null;
+        $instance->version = $data['version'] ?? null;
+        $instance->unstableRestarts = $data['unstable_restarts'] ?? null;
+        $instance->restartTime = $data['restart_time'] ?? null;
+        $instance->pmId = $data['pm_id'] ?? null;
+        $instance->createdAt = $data['created_at'] ?? null;
+        $instance->axmDynamic = ($data['axm_dynamic'] ?? null) !== null ? AxmDynamic::fromJson($data['axm_dynamic']) : null;
+        $instance->axmOptions = ($data['axm_options'] ?? null) !== null ? AxmOptions::fromJson($data['axm_options']) : null;
+        $instance->axmMonitor = ($data['axm_monitor'] ?? null) !== null ? AxmMonitor::fromJson($data['axm_monitor']) : null;
+        $instance->axmActions = $data['axm_actions'] ?? null;
+        $instance->pmUptime = $data['pm_uptime'] ?? null;
+        $instance->status = $data['status'] ?? null;
         $instance->uniqueId = $data['unique_id'] ?? null;
         $instance->pm2Home = $data['PM2_HOME'] ?? null;
         $instance->shell = $data['SHELL'] ?? null;
@@ -166,6 +220,33 @@ final class Env
         $instance->lcNumeric = $data['LC_NUMERIC'] ?? null;
         $instance->_ = $data['_'] ?? null;
         $instance->pm2Usage = $data['PM2_USAGE'] ?? null;
+        $instance->nodeAppInstance = $data['NODE_APP_INSTANCE'] ?? null;
+        $instance->vizionRunning = $data['vizion_running'] ?? null;
+        $instance->kmLink = $data['km_link'] ?? null;
+        $instance->pmPidPath = $data['pm_pid_path'] ?? null;
+        $instance->pmErrLogPath = $data['pm_err_log_path'] ?? null;
+        $instance->pmOutLogPath = $data['pm_out_log_path'] ?? null;
+        $instance->instances = $data['instances'] ?? null;
+        $instance->execMode = $data['exec_mode'] ?? null;
+        $instance->execInterpreter = $data['exec_interpreter'] ?? null;
+        $instance->pmCwd = $data['pm_cwd'] ?? null;
+        $instance->pmExecPath = $data['pm_exec_path'] ?? null;
+        $instance->nodeArgs = $data['node_args'] ?? null;
+        $instance->name = $data['name'] ?? null;
+        $instance->filterEnv = $data['filter_env'] ?? null;
+        $instance->namespace = $data['namespace'] ?? null;
+        $instance->args = $data['args'] ?? null;
+        $instance->env = ($data['env'] ?? null) !== null ? Env::fromJson($data['env']) : null;
+        $instance->mergeLogs = $data['merge_logs'] ?? null;
+        $instance->vizion = $data['vizion'] ?? null;
+        $instance->autorestart = $data['autorestart'] ?? null;
+        $instance->watch = $data['watch'] ?? null;
+        $instance->instanceVar = $data['instance_var'] ?? null;
+        $instance->pmx = $data['pmx'] ?? null;
+        $instance->automation = $data['automation'] ?? null;
+        $instance->treekill = $data['treekill'] ?? null;
+        $instance->windowsHide = $data['windowsHide'] ?? null;
+        $instance->killRetryTime = $data['kill_retry_time'] ?? null;
         return $instance;
     }
 }
