@@ -6,11 +6,11 @@ use JalalLinuX\Pm2\Structure\Process;
 
 class Pm2
 {
-    private ?string $user;
+    private ?string $prefix;
 
-    public function __construct(string $user = null)
+    public function __construct(string $prefix = null)
     {
-        $this->user = $user;
+        $this->prefix = $prefix;
     }
 
     /**
@@ -269,8 +269,8 @@ class Pm2
 
     protected function runCommand(string $command)
     {
-        if (!is_null($this->user)) {
-            return shell_exec("runuser -u {$this->user} pm2 {$command}");
+        if (!is_null($this->prefix)) {
+            return shell_exec("{$this->prefix} pm2 {$command}");
         }
         return shell_exec(ltrim("pm2 {$command}"));
     }

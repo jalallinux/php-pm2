@@ -3,9 +3,9 @@
 use JalalLinuX\Pm2\Pm2;
 
 if (! function_exists('pm2')) {
-    function pm2(string $user = null): Pm2
+    function pm2(string $prefix = null): Pm2
     {
-        return new Pm2($user);
+        return new Pm2($prefix);
     }
 }
 
