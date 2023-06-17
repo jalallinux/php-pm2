@@ -6,6 +6,13 @@ use JalalLinuX\Pm2\Structure\Process;
 
 class Pm2
 {
+    private ?string $user;
+
+    public function __construct(string $user = null)
+    {
+        $this->user = $user;
+    }
+
     /**
      * @param  string  $sortField
      * @param  bool  $desc
@@ -262,6 +269,9 @@ class Pm2
 
     protected function runCommand(string $command)
     {
-        return shell_exec("pm2 {$command}");
+        if (!is_null($this->user)) {
+            return shell_exec("runuser -u {$this->user} pm2 {$command}");
+        }
+        return shell_exec(ltrim("pm2 {$command}"));
     }
 }
