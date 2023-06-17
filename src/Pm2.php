@@ -272,6 +272,7 @@ class Pm2
         if (!is_null($this->prefix)) {
             return shell_exec("{$this->prefix} pm2 {$command}");
         }
+
         return shell_exec(ltrim("pm2 {$command}"));
     }
 }
